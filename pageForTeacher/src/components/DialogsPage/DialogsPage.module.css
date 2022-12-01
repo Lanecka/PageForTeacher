@@ -1,0 +1,55 @@
+.questions {
+  margin: 0px;
+}
+
+.dialogs {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+}
+
+.students {
+  margin-left: 20px;
+}
+
+.student {
+  display: flex;
+  align-items: center;
+}
+
+.student a {
+  text-decoration: none;
+  color: black;
+}
+
+.student a.active {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #f59aff;
+}
+
+.student a:hover {
+  color: #00D1DE;
+}
+
+.student img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.messages {
+  padding: 0 20px;
+  border-left: 2px solid #00D1DE;
+}
+
+.message {
+  border: 1px solid #00D1DE;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.text {
+  margin-left: 20px;
+}
