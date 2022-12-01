@@ -1,0 +1,27 @@
+.navigation {
+  grid-area: n;
+  background-color: #AEFAFF;
+  border: 2px solid #00D1DE;
+  border-radius: 30px;
+  padding: 30px 20px;
+  font-size: 24px;
+}
+
+.navigation:hover {
+  background-color: #fdf8ff;
+  border: 2px solid #f59aff;
+}
+
+.item a {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+
+.item a:hover {
+  color: #00D1DE;
+}
+
+.item a.active {
+  color: #f59aff;
+}

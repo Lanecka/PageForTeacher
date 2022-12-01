@@ -1,0 +1,17 @@
+.App-wrapper {
+  display: grid;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 3fr 9fr;
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.App-wrapper__content {
+  grid-area: c;
+  /* border: 2px solid #00D1DE; */
+  border-radius: 30px;
+}
