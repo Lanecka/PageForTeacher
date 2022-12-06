@@ -1,26 +1,31 @@
+import { connect } from 'react-redux';
 import { addPostActionCreation, updateNewPostActionCreation } from '../../../redux/redusers/profileReduser';
 import MyPosts from './MyPosts';
 
-const MyPostsContainer = (props) => {
-  let state = props.store.getState()
-
-  let addPost = () => {
-    props.store.dispatch(addPostActionCreation())
+let mapStateToProps = (state) => {
+  return {
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText
   }
-
-  let postOnChange = (text) => {
-    let action = updateNewPostActionCreation(text)
-    props.store.dispatch(action)
-  }
-
-  return (
-    <MyPosts 
-      updateNewPost={postOnChange} 
-      addPost={addPost} 
-      posts={state.profilePage.posts}
-      newPostText={state.profilePage.newPostText}
-    />
-  )
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    updateNewPost: (text) => {
+      dispatch(updateNewPostActionCreation(text))
+    },
+    addPost: () => {
+      dispatch(addPostActionCreation())
+    }
+  }
+}
+
+/**
+ * Контейнерная компонента, передает данные презентационной компоненте
+ * где mapStateToProps- передает данные state
+ * mapDispatchToProps- вызывает диспетчеров для добавления и обновления сообщений поста
+ * MyPosts- презентационная компонента
+ */
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer;
