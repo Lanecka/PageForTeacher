@@ -1,26 +1,30 @@
-import React from 'react';
+import { connect } from 'react-redux';
 import { addMessageActionCreation, updateNewMessageBoxActionCreation } from '../../redux/redusers/dialogsReduser'
 import DialogsPage from './DialogsPage';
 
-const DialogsPageContainer = (props) => {
-  let state = props.store.getState().dialogsPage;
-
-  let addMessage = () => {
-    props.store.dispatch(addMessageActionCreation())
+let mapStateToProps = (state) => {
+  return {
+    dialogsPage: state.dialogsPage
   }
-
-  let messageOnChange = (text) => {
-    let action = updateNewMessageBoxActionCreation(text)
-    props.store.dispatch(action)
-  }
-
-  return (
-    <DialogsPage 
-      updateNewMessage={messageOnChange}
-      addMessage={addMessage}
-      dialogsPage={state}
-    />
-  )
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addMessage: () => {
+      dispatch(addMessageActionCreation());
+    },
+    updateNewMessage: (text) => {
+      dispatch(updateNewMessageBoxActionCreation(text));
+    }
+  }
+}
+
+/**
+ * Контейнерная компонента, передает данные презентационной компоненте
+ * где mapStateToProps- передает данные state
+ * mapDispatchToProps- вызывает диспетчеров для добавления и обновления сообщений
+ * DialogsPage- презентационная компонента
+ */
+const DialogsPageContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsPage)
 
 export default DialogsPageContainer;
