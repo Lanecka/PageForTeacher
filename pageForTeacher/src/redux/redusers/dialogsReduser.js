@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const UPDATE_NEW_MESSAGE_BOX = 'UPDATE-NEW-MESSAGE-BOX';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
@@ -57,16 +59,22 @@ let initialState = {
 const dialogsReduser = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
-      let newMessage = {
-        id: 6,
-        message: state.newMessageText
+      return {
+        ...state,
+        newMessageText: '',
+        messagesList: [
+          ...state.messagesList,
+          {
+            id: uuidv4(),
+            message: state.newMessageText
+          }
+        ]
       }
-      state.messagesList.push(newMessage)
-      state.newMessageText = ''
-      return state;
     case UPDATE_NEW_MESSAGE_BOX:
-      state.newMessageText = action.newMessage
-      return state;
+      return {
+        ...state,
+        newMessageText: action.newMessage
+      }
     default:
       return state;
   }

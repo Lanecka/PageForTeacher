@@ -12,6 +12,7 @@ import DialogsPageContainer from './components/DialogsPage/DialogPageContainer';
 // import Documents from './components/Documents/Documents';
 // import Photos from './components/Photos/Photos';
 // import Movies from './components/Movies/Movies';
+import UsersPageContainer from './components/UsersPage/UsersPageContainer';
 import NotFound from './components/NotFoundPage/NotFounPage';
 import './App.css';
 
@@ -32,6 +33,7 @@ function App (props) {
             <Route path='/photos' element={<Photos />} />
             <Route path='/movies' element={<Movies />} /> */}
             <Route path='/dialogs/*' element={<DialogsPageContainer store={props.store} />} />
+            <Route path='/users' element={<UsersPageContainer />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </div>

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST_TEXT';
 
@@ -23,16 +25,22 @@ let initialState = {
 const profileReduser = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
-      let newPost = {
-        id: 5,
-        message: state.newPostText
+      return {
+        ...state,
+        newPostText: '',
+        posts: [
+          ...state.posts,
+          {
+            id: uuidv4(),
+            message: state.newPostText
+          }
+        ]
       }
-      state.posts.push(newPost)
-      state.newPostText = ''
-      return state;
     case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newPost
-      return state;
+      return {
+        ...state,
+        newPostText: action.newPost
+      }
     default:
       return state;
   }

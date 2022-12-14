@@ -11,8 +11,8 @@ import style from './DialogsPage.module.css';
 const DialogsPage = (props) => {
   let state = props.dialogsPage;
 
-  let studentsElements = state.studentsList.map(s => <StudentChoose id={s.id} name={s.name} img={s.img} />)
-  let studentQuestion = state.messagesList.map(q => <Question id={q.id} message={q.message} />)
+  let studentsElements = state.studentsList.map(s => <StudentChoose key={s.id} id={s.id} name={s.name} img={s.img} />)
+  let studentQuestion = state.messagesList.map(q => <Question key={q.id} id={q.id} message={q.message} />)
   let newMessageText = state.newMessageText
 
   let onAddMessage = () => {
