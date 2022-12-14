@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  border: 2px solid #00D1DE;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.user:hover {
+  border:  2px solid #f59aff;
+}
+
+.user h4 {
+  color: #00D1DE;
+}
+
+.view {
+  width: 25%;
+}
+
+.view img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

@@ -35,6 +35,9 @@ const Navigation = () => {
       <div className={style.item}>
         <NavLink to="/dialogs" className={navData => navData.isActive ? style.active : style.item}>• Сообщения</NavLink>
       </div>
+      <div className={style.item}>
+        <NavLink to="/users" className={navData => navData.isActive ? style.active : style.item}>• Пользователи</NavLink>
+      </div>
     </nav>
   )
 }
