@@ -1,8 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Navigation from './components/Navigation/Navigation';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import Navigation from './components/common/Navigation/Navigation';
 import DialogsPageContainer from './components/DialogsPage/DialogPageContainer';
 // import Chemistry from './components/Chemistry/Chemistry';
 // import Biology from './components/Biology/Biology';
@@ -14,16 +12,22 @@ import DialogsPageContainer from './components/DialogsPage/DialogPageContainer';
 // import Movies from './components/Movies/Movies';
 import UsersPageContainer from './components/UsersPage/UsersPageContainer';
 import NotFound from './components/NotFoundPage/NotFounPage';
+import ProfilePageContainer from './components/ProfilePage/ProfilePageContainer';
+import TeacherPage from './components/TeacherPage/TeacherPage';
 import './App.css';
+import HeaderContainer from './components/common/Header/HeaderContainer';
 
 function App (props) {
   return (
       <div className="App-wrapper">
-        <Header />
+        <HeaderContainer />
         <Navigation />
         <div className="App-wrapper__content">
           <Routes>
-            <Route path='/home' element={<ProfilePage store={props.store} />} />
+            <Route path='/myPage' element={<TeacherPage store={props.store} />} />
+            <Route path='/profile' element={<ProfilePageContainer store={props.store} />}> 
+              <Route path=':userId' element={<ProfilePageContainer />} />
+            </Route>
             {/* <Route path='/chemistry' element={<Chemistry />} />
             <Route path='/biology' element={<Biology />} />
             <Route path='/exams' element={<Exams />} />

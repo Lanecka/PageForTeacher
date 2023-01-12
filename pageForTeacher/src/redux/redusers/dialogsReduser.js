@@ -80,8 +80,9 @@ const dialogsReduser = (state = initialState, action) => {
   }
 }
 
-export const addMessageActionCreation = () => ({ type: SEND_MESSAGE })
-export const updateNewMessageBoxActionCreation = (text) => ({
+// Action Creation:
+export const addMessage = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageBox = (text) => ({
   type: UPDATE_NEW_MESSAGE_BOX,
   newMessage: text
 })

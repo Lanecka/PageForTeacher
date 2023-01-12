@@ -1,21 +1,10 @@
 import { connect } from 'react-redux';
-import { addMessageActionCreation, updateNewMessageBoxActionCreation } from '../../redux/redusers/dialogsReduser'
+import { addMessage, updateNewMessageBox } from '../../redux/redusers/dialogsReduser'
 import DialogsPage from './DialogsPage';
 
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsPage
-  }
-}
-
-let mapDispatchToProps = (dispatch) => {
-  return {
-    addMessage: () => {
-      dispatch(addMessageActionCreation());
-    },
-    updateNewMessage: (text) => {
-      dispatch(updateNewMessageBoxActionCreation(text));
-    }
   }
 }
 
@@ -25,6 +14,11 @@ let mapDispatchToProps = (dispatch) => {
  * mapDispatchToProps- вызывает диспетчеров для добавления и обновления сообщений
  * DialogsPage- презентационная компонента
  */
-const DialogsPageContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsPage)
+const DialogsPageContainer = connect(mapStateToProps, 
+  {
+    addMessage, 
+    updateNewMessageBox
+  }
+)(DialogsPage)
 
 export default DialogsPageContainer;
