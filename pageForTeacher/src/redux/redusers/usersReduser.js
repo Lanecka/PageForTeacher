@@ -7,12 +7,6 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const TOGLE_IS_FETCHING = 'TOGLE-IS-FETCHING';
 
-/**
- * Почемучка X>10 вопросов;
- * Цветик 5<X=<10 вопросов;
- * Знайка 0<Х=<5 вопросов;
- * Нeзнайка 0 вопросов 
- */
 let initialState = {
   users: [],
   pageSize: 10,
