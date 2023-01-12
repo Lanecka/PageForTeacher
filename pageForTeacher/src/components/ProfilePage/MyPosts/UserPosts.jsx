@@ -1,32 +1,32 @@
 import React from 'react';
 import Post from './Post/Post';
-import style from './MyPosts.module.css';
+import style from './UserPosts.module.css';
 
-const MyPosts = (props) => {
+const UserPosts = (postsProps) => {
   let postsElements =
-    props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} />)
-  let newPostText = props.newPostText
+    postsProps.posts.map(posts => <Post key={posts.id} id={posts.id} message={posts.message} />)
+  let newPostUserText = postsProps.newPostUserText
 
   let newPostElement = React.createRef();
 
   let onAddPost = () => {
-    props.addPost()
+    postsProps.addUserPost()
   }
 
   let postOnChange = () => {
     let text = newPostElement.current.value
-    props.updateNewPost(text)
+    postsProps.updateNewUserPost(text)
   }
 
   return (
     <div className={style.posts}>
       <h2>Записи блога</h2>
       <div className={style.newItem}>
-        <textarea 
-          onChange={postOnChange} 
-          placeholder="Новая запись" 
-          ref={newPostElement} 
-          value={newPostText} 
+        <textarea
+          onChange={postOnChange}
+          placeholder="Новая запись"
+          ref={newPostElement}
+          value={newPostUserText}
         />
         <div>
           <button onClick={onAddPost}>Отправить</button>
@@ -39,4 +39,4 @@ const MyPosts = (props) => {
   )
 }
 
-export default MyPosts;
+export default UserPosts;

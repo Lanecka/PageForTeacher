@@ -1,8 +1,11 @@
 // import { v4 as uuidv4 } from 'uuid';
 
 const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW'
-const SET_USERS = 'SET-USERS'
+const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const TOGLE_IS_FETCHING = 'TOGLE-IS-FETCHING';
 
 /**
  * Почемучка X>10 вопросов;
@@ -11,50 +14,11 @@ const SET_USERS = 'SET-USERS'
  * Нeзнайка 0 вопросов 
  */
 let initialState = {
-  users: []
-  //DELETED: 
-  // users: [
-  //   {
-  //     id: 1,
-  //     name: 'Ivan Durov',
-  //     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReat85zPN80s7pgNCtJkQcs4OguKiBudU-t4ywvz4-e54vxADlSt2uEYUWWNF9HjURkn0&usqp=CAU',
-  //     followed: true,
-  //     userClass: '9Б',
-  //     status: 'Почемучка'
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Людмила Матрешкина',
-  //     img: 'http://sun9-3.userapi.com/s/v1/if1/y72Ov_XZPLyuIeAQsCKjkYj31CV4h3ULfIBf755hFxDLRpqvvyxv0Rcs-RDqK0dOBufGqVX5.jpg?size=200x235&quality=96&crop=0,0,500,588&ava=1',
-  //     followed: true,
-  //     userClass: '8Г',
-  //     status: 'Цветик'
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Ксения Юсупова',
-  //     img: 'https://bipbap.ru/wp-content/uploads/2020/11/83365328c62d52bc35b92e9e89fd59ff-640x640.jpg',
-  //     followed: true,
-  //     userClass: '11А',
-  //     status: 'Знайка'
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Максим Кошкин',
-  //     img: 'https://klike.net/uploads/posts/2019-06/1560329641_2.jpg',
-  //     followed: false,
-  //     userClass: 'Родитель',
-  //     status: 'Незнайка'
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Копирующий Нинзя',
-  //     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReat85zPN80s7pgNCtJkQcs4OguKiBudU-t4ywvz4-e54vxADlSt2uEYUWWNF9HjURkn0&usqp=CAU',
-  //     followed: false,
-  //     userClass: '5А',
-  //     status: 'Незнайка'
-  //   }
-  // ]
+  users: [],
+  pageSize: 10,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: false
 };
 
 const usersReduser = (state = initialState, action) => {
@@ -79,27 +43,44 @@ const usersReduser = (state = initialState, action) => {
           return u;
         })
       };
-    case SET_USERS: 
+    case SET_USERS:
       return {
-          ...state, 
-          users: [ ...state.users, ...action.users ] 
-      }
+        ...state,
+        users: action.users
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage
+      };
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.count
+      };
+    case TOGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching
+      };
     default:
       return state;
   }
 }
 
-/**
- * Подписчик
- */
-export const followActionCreation = (userId) => ({ type: FOLLOW, userId });
-/**
- * Не подписан
- */
-export const unFollowActionCreation = (userId) => ({ type: UNFOLLOW, userId });
-/**
- * Загрузить пользователей еще
- */
-export const setUsersActionCreation = (users) => ({ type: SET_USERS, users });
+// Функции Action Creation возвращают actoin-объeкт с определенным типом данных, 
+// и через диспатч мы вызываем этот объeкт:
+/** Подписчик */
+export const follow = (userId) => ({ type: FOLLOW, userId });
+/**Не подписан */
+export const unFollow = (userId) => ({ type: UNFOLLOW, userId });
+/** Загрузить пользователей еще */
+export const setUsers = (users) => ({ type: SET_USERS, users });
+/** Загрузить текущую страницу */
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+/** Загрузить пользователей с сервака */
+export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount });
+/** Preloader - Картинка загрузки при медленном соединении */
+export const togleISFetching = (isFetching) => ({ type: TOGLE_IS_FETCHING, isFetching });
 
 export default usersReduser;

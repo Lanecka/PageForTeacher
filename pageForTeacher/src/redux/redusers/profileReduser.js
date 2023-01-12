@@ -19,7 +19,7 @@ let initialState = {
       message: `22.11.22!`
     }
   ],
-  newPostText: 'Новая запись'
+  newPostText: 'Новая запись',
 };
 
 const profileReduser = (state = initialState, action) => {
@@ -46,10 +46,8 @@ const profileReduser = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreation = () => ({ type: ADD_POST })
-export const updateNewPostActionCreation = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newPost: text
-})
+//Action Creation:
+export const addPost = () => ({ type: ADD_POST })
+export const updateNewPost = (text) => ({ type: UPDATE_NEW_POST_TEXT, newPost: text })
 
 export default profileReduser;

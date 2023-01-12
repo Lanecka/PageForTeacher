@@ -1,0 +1,10 @@
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+img {
+  width: 50px;
+  margin: 20px;
+}

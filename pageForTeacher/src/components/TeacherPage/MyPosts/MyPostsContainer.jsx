@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPostActionCreation, updateNewPostActionCreation } from '../../../redux/redusers/profileReduser';
+import { updateNewPost, addPost } from '../../../redux/redusers/profileReduser';
 import MyPosts from './MyPosts';
 
 let mapStateToProps = (state) => {
@@ -9,23 +9,17 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    updateNewPost: (text) => {
-      dispatch(updateNewPostActionCreation(text))
-    },
-    addPost: () => {
-      dispatch(addPostActionCreation())
-    }
-  }
-}
-
 /**
  * Контейнерная компонента, передает данные презентационной компоненте
  * где mapStateToProps- передает данные state
  * mapDispatchToProps- вызывает диспетчеров для добавления и обновления сообщений поста
  * MyPosts- презентационная компонента
  */
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+const MyPostsContainer = connect(mapStateToProps,
+  {
+    updateNewPost,
+    addPost
+  }
+)(MyPosts)
 
 export default MyPostsContainer;

@@ -1,0 +1,34 @@
+.header {
+  grid-area: h;
+  background-color: #AEFAFF;
+  border: 2px solid #00D1DE;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.header:hover {
+  background-color: #fdf8ff;
+  border: 2px solid #f59aff;
+}
+
+.namePage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #000000;
+  text-decoration: none;
+}
+
+.namePage img {
+  width: 60px;
+  margin-right: 20px;
+}
+
+.loginBlock {
+  text-decoration: none;
+  color: #f59aff;
+  font-weight: bold;
+}

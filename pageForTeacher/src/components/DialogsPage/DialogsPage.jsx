@@ -8,20 +8,20 @@ import style from './DialogsPage.module.css';
  * служит для отрисовки презентациоонной компоненты
  * и удовлетворить ее необходимыми данными
  */
-const DialogsPage = (props) => {
-  let state = props.dialogsPage;
+const DialogsPage = (dialogsProps) => {
+  let state = dialogsProps.dialogsPage;
 
-  let studentsElements = state.studentsList.map(s => <StudentChoose key={s.id} id={s.id} name={s.name} img={s.img} />)
-  let studentQuestion = state.messagesList.map(q => <Question key={q.id} id={q.id} message={q.message} />)
+  let studentsElements = state.studentsList.map(student => <StudentChoose key={student.id} id={student.id} name={student.name} img={student.img} />)
+  let studentQuestion = state.messagesList.map(question => <Question key={question.id} id={question.id} message={question.message} />)
   let newMessageText = state.newMessageText
 
   let onAddMessage = () => {
-    props.addMessage()
+    dialogsProps.addMessage()
   }
 
   let newMessageOnChange = (e) => {
     let text = e.target.value
-    props.updateNewMessage(text)
+    dialogsProps.updateNewMessageBox(text)
   }
 
   return (
